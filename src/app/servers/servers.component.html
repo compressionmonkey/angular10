@@ -1,0 +1,10 @@
+<!-- <input (input)="handleChange($event)"> -->
+<input [(ngModel)]="secretPassword">
+<p>{{ secretPassword }}</p>
+<p> {{ serverStatus }} </p>
+<button [disabled]= "!secretPassword" (click)="onClick()">display Details</button>
+<p *ngIf="clicked; else noUsername">secretPassword exists. It is {{ secretPassword }}</p>
+<ng-template #noUsername>
+    <p [ngClass]="{online: serverStatus === 'online'}" [ngStyle]="{backgroundColor: getColor()}">No Username</p>
+</ng-template>
+<p *ngFor="let entry of total; let i = index" [ngStyle]="{backgroundColor: i >= 2 ? 'blue': 'transparent'}" [ngClass]="{'online': i >= 2}">{{ entry }}</p>
